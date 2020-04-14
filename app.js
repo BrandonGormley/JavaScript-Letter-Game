@@ -19,7 +19,11 @@ startButton.addEventListener('click', () => {
 // Selectors a random Phrase from array
 function getRandomPhraseAsArray(arr) {
     let randomPhrase = arr[Math.floor(Math.random() * arr.length)];
-    console.log(randomPhrase);
 }
 
 // Added the Selected Phrase to the display
+function addPhraseToDisplay(arr) {
+    for (let i = 0; i < arr.length; i++) {
+
+    }
+}
