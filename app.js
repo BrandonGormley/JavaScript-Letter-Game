@@ -18,12 +18,31 @@ startButton.addEventListener('click', () => {
 
 // Selectors a random Phrase from array
 function getRandomPhraseAsArray(arr) {
-    let randomPhrase = arr[Math.floor(Math.random() * arr.length)];
+    const randomPhrase = arr[Math.floor(Math.random() * arr.length)];
+    const randomPhraseSplit = randomPhrase.split('');
+    return randomPhraseSplit;
 }
 
 // Added the Selected Phrase to the display
 function addPhraseToDisplay(arr) {
     for (let i = 0; i < arr.length; i++) {
-
+        let ul = phrase.querySelector('ul');
+        let li = document.createElement('li');
+        ul.appendChild(li);
+        li.textContent = arr[i];
+        if (arr[i] === ' ') {
+            li.classList.add('space');
+        } else {
+            li.classList.add('letter');
+        }
     }
+}
+getRandomPhraseAsArray(phrases);
+const phraseArray = getRandomPhraseAsArray(phrases);
+addPhraseToDisplay(phraseArray);
+
+// Check Letter Function
+
+function checkletter(button) {
+
 }
