@@ -42,7 +42,19 @@ const phraseArray = getRandomPhraseAsArray(phrases);
 addPhraseToDisplay(phraseArray);
 
 // Check Letter Function
-
-function checkletter(button) {
-
+function checkLetter(button) {
+    const checkLetter = document.querySelectorAll('.letter');
+    let match;
+    for (let i = 0; i < checkLetter.length; i++) {
+        if (button.textContent === checkLetter[i].textContent) {
+            checkLetter[i].classList.add('show');
+            match = button.textContent;
+            return match;
+        }
+    }
 }
+
+// Event Listener for Screen Keyboard Press
+qwerty.addEventListener('click', () => {
+
+});
