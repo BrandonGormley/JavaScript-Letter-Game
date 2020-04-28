@@ -43,18 +43,21 @@ addPhraseToDisplay(phraseArray);
 
 // Check Letter Function
 function checkLetter(button) {
-    const checkLetter = document.querySelectorAll('.letter');
+    const letters = document.querySelectorAll('.letter');
     let match;
-    for (let i = 0; i < checkLetter.length; i++) {
-        if (button.textContent === checkLetter[i].textContent) {
-            checkLetter[i].classList.add('show');
+    for (let i = 0; i < letters.length; i++) {
+        if (button.textContent === letters[i].textContent) {
+            letters[i].classList.add('show');
             match = button.textContent;
-            return match;
         }
     }
+    return match;
 }
 
 // Event Listener for Screen Keyboard Press
-qwerty.addEventListener('click', () => {
-
+qwerty.addEventListener('click', (e) => {
+    if (event.target.tagName === 'BUTTON') {
+        event.target.classList.add('chosen');
+    }
+    let letterFound = checkLetter(e.target);
 });
