@@ -59,9 +59,10 @@ function checkLetter(button) {
 qwerty.addEventListener('click', (e) => {
     if (event.target.tagName === 'BUTTON') {
         event.target.classList.add('chosen');
+        event.target.setAttribute('disabled', '');
     }
     let letterFound = checkLetter(e.target);
-    if (!letterFound) {
+    if (!letterFound && event.target.tagName === 'BUTTON') {
         tries[missed].style.display = 'none';
         missed += 1;
     }
@@ -78,6 +79,8 @@ function checkWin() {
         const title = document.querySelector('.title');
         title.textContent = 'You won!!!';
         overlay.style.display = 'flex';
+        startButton.style.display = 'none';
+
     }
 
     if (missed > 4) {
@@ -85,5 +88,6 @@ function checkWin() {
         const title = document.querySelector('.title');
         title.textContent = 'You Lose...';
         overlay.style.display = 'flex';
+        startButton.style.display = 'none';
     }
 }
