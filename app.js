@@ -4,12 +4,13 @@ const qwerty = document.querySelector('#qwerty');
 const phrase = document.querySelector('#phrase');
 const overlay = document.querySelector('#overlay');
 const startButton = document.querySelector('.btn__reset');
+const tries = document.querySelectorAll('.tries');
 
 // Missed Attempts
 let missed = 0;
 
 // Phrase Array
-const phrases = ['Success is the way of life', 'If you believe it, you can achieve it', 'Do not give up', 'Failure sets up victory', 'Patience will unlock the key to success'];
+const phrases = ['success is the way of life', 'if you believe it you can achieve it', 'do not give up', 'failure sets up victory', 'patience will unlock the key to success'];
 
 // Start Game
 startButton.addEventListener('click', () => {
@@ -44,11 +45,11 @@ addPhraseToDisplay(phraseArray);
 // Check Letter Function
 function checkLetter(button) {
     const letters = document.querySelectorAll('.letter');
-    let match;
+    let match = false;
     for (let i = 0; i < letters.length; i++) {
         if (button.textContent === letters[i].textContent) {
             letters[i].classList.add('show');
-            match = button.textContent;
+            match = true;
         }
     }
     return match;
@@ -60,6 +61,11 @@ qwerty.addEventListener('click', (e) => {
         event.target.classList.add('chosen');
     }
     let letterFound = checkLetter(e.target);
+    if (!letterFound) {
+        tries[missed].style.display = 'none';
+        missed += 1;
+    }
+    checkWin();
 });
 
 // Check Win Function
@@ -75,7 +81,7 @@ function checkWin() {
     }
 
     if (missed > 4) {
-        overlay.classList.add('win');
+        overlay.classList.add('lose');
         const title = document.querySelector('.title');
         title.textContent = 'You Lose...';
         overlay.style.display = 'flex';
