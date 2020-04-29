@@ -61,3 +61,23 @@ qwerty.addEventListener('click', (e) => {
     }
     let letterFound = checkLetter(e.target);
 });
+
+// Check Win Function
+function checkWin() {
+    const letter = document.querySelectorAll('.letter');
+    const show = document.querySelectorAll('.show');
+
+    if (letter.length === show.length) {
+        overlay.classList.add('win');
+        const title = document.querySelector('.title');
+        title.textContent = 'You won!!!';
+        overlay.style.display = 'flex';
+    }
+
+    if (missed > 4) {
+        overlay.classList.add('win');
+        const title = document.querySelector('.title');
+        title.textContent = 'You Lose...';
+        overlay.style.display = 'flex';
+    }
+}
